@@ -1,0 +1,53 @@
+### Get all notes
+
+GET http://localhost:1234/notes
+Content-Type: application/json
+
+### Get note by id
+
+GET http://localhost:1234/notes/1
+Content-Type: application/json
+
+### Create note
+
+POST http://localhost:1234/notes
+Content-Type: application/json
+
+{
+  "date":"2022-03-25T13:48:42Z",
+  "buyer_id":1
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+### Update note
+
+PATCH http://localhost:1234/notes/2
+Content-Type: application/json
+
+{
+  "date":"2023-07-21T11:24:07Z",
+  "buyer_id": 3
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 204, "Response status is not 204");
+});
+%}
+
+### Delete note
+
+DELETE http://localhost:1234/notes/2
+Content-Type: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 204, "Response status is not 204");
+});
+%}
+

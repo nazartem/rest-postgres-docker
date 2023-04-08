@@ -1,0 +1,57 @@
+### Get all products
+
+GET http://localhost:1234/products
+Content-Type: application/json
+
+### Get product by id
+
+GET http://localhost:1234/products/1
+Content-Type: application/json
+
+### Create product
+
+POST http://localhost:1234/products
+Content-Type: application/json
+
+{
+  "name":"Илюха",
+  "description": "some description",
+  "price":0.02,
+  "amount":1
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+### Update product
+
+PATCH http://localhost:1234/products/2
+Content-Type: application/json
+
+{
+  "name":"Морковь",
+  "description": "some description",
+  "price":15,
+  "amount":35
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 204, "Response status is not 204");
+});
+%}
+
+### Delete product
+
+DELETE http://localhost:1234/products/2
+Content-Type: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 204, "Response status is not 204");
+});
+%}
+
